@@ -1,3 +1,6 @@
 __pycache__
 .env
 .learn
+
+data/interim/pollutants.csv
+data/processed/clean_pollutants.csv
