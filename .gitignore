@@ -4,3 +4,9 @@ __pycache__
 data/interim/pollutants.csv
 data/processed/clean_pollutants.csv
 data/processed/clean_df.csv
+data/processed/factorize_csv
+data/processed
+
+data
+models
+
