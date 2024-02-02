@@ -6,39 +6,48 @@ import joblib
 model_path = os.path.join('models', 'RandomForestMadrid_23.pk')
 model = joblib.load(model_path)
 
-dict_area = {
+# dict_area = {
 
-}
+# }
 
-dict_estacion = {
+# dict_estacion = {
 
-}
-
-
-with open('/data/interim/dicc_magnitudes.pkl', "rb") as file:
-    objeto_cargado = pickle.load(file)
-
-dict_magnitud ={
-
-}
+# }
 
 
+# with open('/data/interim/dicc_magnitudes.pkl', "rb") as file:
+#     objeto_cargado = pickle.load(file)
 
-# Definir los elementos de entrada
-media_diaria = st.number_input(
-    "Introduce la Media Diaria del Contaminante:")
+# dict_magnitud ={
 
-
-select_tipo_estacion = st.selectbox(
-    "Selecciona Tipo de Estación:", dict_estacion)
+# }
 
 
-select_tipo_area = st.selectbox(
-    "Selecciona Tipo de Área:", dict_area)
+def cargar_diccionario(dicc_magnitudes):
+    try:
+        with open('/data/interim/dicc_magnitudes.pkl', 'rb') as archivo:
+            diccionario = pickle.load(archivo)
+        return diccionario
+    except FileNotFoundError:
+        st.error(f"El archivo {dicc_magnitudes} no se encontró.")
+        return None
 
 
-selected_magnitud = st.selectbox(
-    "Selecciona una Magnitud:", list(dict_magnitud.keys()))
+# # Definir los elementos de entrada
+# media_diaria = st.number_input(
+#     "Introduce la Media Diaria del Contaminante:")
+
+
+# select_tipo_estacion = st.selectbox(
+#     "Selecciona Tipo de Estación:", dict_estacion)
+
+
+# select_tipo_area = st.selectbox(
+#     "Selecciona Tipo de Área:", dict_area)
+
+
+# selected_magnitud = st.selectbox(
+#     "Selecciona una Magnitud:", list(dict_magnitud.keys()))
 
 
 
