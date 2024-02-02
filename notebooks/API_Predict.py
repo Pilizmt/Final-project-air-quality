@@ -25,7 +25,7 @@ model = joblib.load(model_path)
 
 def cargar_diccionario(dicc_magnitudes):
     try:
-        with open('/data/interim/dicc_magnitudes.pkl', 'rb') as archivo:
+        with open('/notebooks/dicc_magnitudes.pkl', 'rb') as archivo:
             diccionario = pickle.load(archivo)
         return diccionario
     except FileNotFoundError:
