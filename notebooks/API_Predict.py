@@ -2,11 +2,11 @@ import streamlit as st
 from pickle import load
 
 
-dicc_municipality = load(open('../data/interim/factorize_values/N_MUNICIPIO_correspondencia.pkl', 'rb'))
-dicc_magnitudes = load(open('../data/interim/factorize_values/MAGNITUD_correspondencia.pkl', 'rb'))
-dicc_area = load(open('../data/interim/factorize_values/TIPO_AREA_correspondencia.pkl', 'rb'))
-dicc_station = load(open('../data/interim/factorize_values/TIPO_ESTACION_correspondencia.pkl', 'rb'))
-dicc_peligrosidad = load(open('../data/interim/factorize_values/PELIGROSIDAD_correspondencia.pkl', 'rb'))
+dicc_municipality = load(open('../data/interim/diccionarios/N_MUNICIPIO_correspondencia.pkl', 'rb'))
+dicc_magnitudes = load(open('../data/interim/diccionarios/MAGNITUD_correspondencia.pkl', 'rb'))
+dicc_area = load(open('../data/interim/diccionarios/TIPO_AREA_correspondencia.pkl', 'rb'))
+dicc_station = load(open('../data/interim/diccionarios/TIPO_ESTACION_correspondencia.pkl', 'rb'))
+dicc_peligrosidad = load(open('../data/interim/diccionarios/PELIGROSIDAD_correspondencia.pkl', 'rb'))
 
 
 # Title
@@ -55,3 +55,6 @@ if st.button('Predict:'):
         result = "⚠️ ALTO ⚠️"
 
     st.text('Peligrosidad:' + result)
+
+
+
