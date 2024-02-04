@@ -1,98 +1,41 @@
-import streamlit as st 
-from pickle import load
-import joblib
-import os
+# import streamlit as st 
+# from pickle import load
+# import joblib
+# import os
 
 
-# # Correspondence
-
-# dicc_municipality = load(open('../data/interim/diccionarios/dicc_tipo_estacion.pk', 'rb'))
-# dicc_area = load(open('../data/interim/diccionarios/dicc_tipo_estacion.pk', 'rb'))
-# dicc_station = load(open('../data/interim/diccionarios/dicc_tipo_estacion.pk', 'rb'))
-# dicc_magnitudes = load(open('../data/interim/diccionarios/dicc_tipo_estacion.pk', 'rb'))
-
-
-# # Title
-# st.title('Nivel de peligrosidad de contaminantes atmosféricos')
-
-# # Introductory message
-# st.write('Introduzca los siguientes valores para iniciar.')
-
-# # Users data
-# sel_municipality = st.selectbox('Seleccione el municipio:', dicc_municipality)
-# sel_area = st.selectbox('Seleccione el tipo de área:', dicc_area)
-# sel_station = st.selectbox('Seleccione el tipo de estación:', dicc_station)
-# sel_magnitud = st.selectbox('Seleccione la magnitud:', dicc_magnitudes)
-# mean_value = st.slider('Introduzca el valor recogido:',
-#                     min_value = 0.04,
-#                     max_value = 800.00,
-#                     step = 0.01
-#                     )
-
-# model_path = os.path.join('models', 'DecisionTree_23.sav')
-# model = joblib.load(model_path)
-
-
-# def perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model):
-#     input_data = [[sel_municipality, sel_area, sel_station, sel_magnitud, mean_value]]
-
-#   # Create a button for prediction
-#     if st.button("Predecir"):
-#         # Call a function to perform prediction
-#         prediction_result = perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model)
-        
-#         # Display the prediction result
-#         st.success(f"Nivel de peligrosidad: {prediction_result}")
-
-#     # Create a dictionary with the user's entries
-#     user_input = {
-#         "Municipio": sel_municipality,
-#         "Tipo de área": sel_area,
-#         "Tipo de estación": sel_station,
-#         "Magnitud": sel_magnitud,
-#         "Media diaria": mean_value
-#     }
-
-#     # Display the dictionary in the application
-#     st.write("Entrada del usuario:", user_input)
-
-#     # Map the numerical result to labels
-    
-# danger = {
-#         0: "Baja",
-#         1: "Normal",
-#         2: "Alta"
-# }
-#     # Make prediction using the model
-# prediction = model.predict(input_data)[0]
-
-
-#     # Returns the type and description corresponding to the predicted star type
-#         return danger.get(prediction)
-
-# if __name__ == "__main__":
-#     main()
-
-
-import streamlit as st
-from pickle import load
-import os
-import joblib
-
-# # Assuming the correct paths are set for each dictionary
+# # Dictionaries
 # dicc_municipality = load(open('../data/interim/factorize_values/N_MUNICIPIO_correspondencia.pkl', 'rb'))
 # dicc_area = load(open('../data/interim/factorize_values/TIPO_AREA_correspondencia.pkl', 'rb'))
 # dicc_station = load(open('../data/interim/factorize_values/TIPO_ESTACION_correspondencia.pkl', 'rb'))
 # dicc_magnitudes = load(open('../data/interim/factorize_values/MAGNITUD_correspondencia.pkl', 'rb'))
-# dicc_danger = load(open('../data/interim/factorize_values/PELIGROSIDAD_correspondencia.pkl', 'rb')) 
+# # dicc_danger = load(open('../data/interim/factorize_values/PELIGROSIDAD_correspondencia.pkl', 'rb')) 
 
-# model = load(open('../notebooks/DecisionTreeMadrid_23.pk', 'rb'))
+# model = load(open('../models/RandomForestMadrid_23.pk', 'rb'))
 
-# def perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model):
+# def perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model, danger_thresholds):
+#     # input_data = [[sel_municipality, sel_area, sel_station, sel_magnitud, mean_value]]
+#     # prediction = model.predict(input_data)[0]
+#     # danger = dicc_danger
+#     # return danger.get(prediction)
+
 #     input_data = [[sel_municipality, sel_area, sel_station, sel_magnitud, mean_value]]
 #     prediction = model.predict(input_data)[0]
-#     danger = dicc_danger
-#     return danger.get(prediction)
+
+#     contaminante = list(dicc_magnitudes.keys())[list(dicc_magnitudes.values()).index(sel_magnitud)]  # Asumiendo que sel_magnitud ya es numérico y necesitas el nombre
+#     thresholds = danger_thresholds.get(contaminante)
+
+#     if thresholds:
+#         if mean_value <= thresholds['Bajo']:
+#             nivel_peligrosidad = 'Bajo'
+#         elif mean_value <= thresholds['Alto']:
+#             nivel_peligrosidad = 'Normal'
+#         else:
+#             nivel_peligrosidad = 'Alto'
+#     else:
+#         nivel_peligrosidad = 'desconocido'  # En caso de que el contaminante no esté en los thresholds
+
+#     return nivel_peligrosidad
 
 # def main():
 #     st.title('Nivel de peligrosidad de contaminantes atmosféricos')
@@ -102,10 +45,16 @@ import joblib
 #     sel_area = st.selectbox('Seleccione el tipo de área:', list(dicc_area.keys()))
 #     sel_station = st.selectbox('Seleccione el tipo de estación:', list(dicc_station.keys()))
 #     sel_magnitud = st.selectbox('Seleccione la magnitud:', list(dicc_magnitudes.keys()))
-#     mean_value = st.slider('Introduzca el valor recogido:', min_value=0.04, max_value=800.00, step=0.01)
+#     mean_value = st.number_input('Introduzca el valor recogido:', min_value=0.04, max_value=800.00, step=0.01)
+
+# # Convertir los valores seleccionados a sus correspondientes valores numéricos
+#     sel_municipality_num = dicc_municipality[sel_municipality]
+#     sel_area_num = dicc_area[sel_area]
+#     sel_station_num = dicc_station[sel_station]
+#     sel_magnitud_num = dicc_magnitudes[sel_magnitud]
 
 #     if st.button("Predecir"):
-#         prediction_result = perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model)
+#         prediction_result = perform_prediction(sel_municipality_num, sel_area_num, sel_station_num, sel_magnitud_num, mean_value, model)
 #         st.success(f"Nivel de peligrosidad: {prediction_result}")
 
 #     user_input = {
@@ -122,53 +71,94 @@ import joblib
 #     main()
 
 
-import streamlit as st 
+#     thresholds_peligrosidad = {
+#     'SO2': {'Bajo': 25, 'Alto': 40},
+#     'CO': {'Bajo': 2, 'Alto': 4},
+#     'C6H6': {'Bajo': 2, 'Alto': 5},
+#     'NO2': {'Bajo': 15, 'Alto': 25},
+#     'PM2.5': {'Bajo': 10, 'Alto': 15},
+#     'PM10': {'Bajo': 25, 'Alto': 45}, 
+#     'NOX': {'Bajo': 75, 'Alto': 100},
+#     'O3': {'Bajo': 75, 'Alto': 100}
+# }
+
+
+
+
+import streamlit as st
 from pickle import load
 
-dicc_municipality = load(open('../data/interim/diccionarios/N_MUNICIPIO_dicc.pk', 'rb'))
-dicc_magnitudes = load(open('../data/interim/diccionarios/MAGNITUD_dicc.pk', 'rb'))
-dicc_area = load(open('../data/interim/diccionarios/TIPO_AREA_dicc.pk', 'rb'))
-dicc_station = load(open('../data/interim/diccionarios/TIPO_ESTACION_dicc.pk', 'rb'))
-dicc_peligrosidad = load(open('../data/interim/diccionarios/PELIGROSIDAD_dicc.pk', 'rb'))
+# Carga de los diccionarios
+dicc_municipality = load(open('../data/interim/factorize_values/N_MUNICIPIO_correspondencia.pkl', 'rb'))
+dicc_area = load(open('../data/interim/factorize_values/TIPO_AREA_correspondencia.pkl', 'rb'))
+dicc_station = load(open('../data/interim/factorize_values/TIPO_ESTACION_correspondencia.pkl', 'rb'))
+dicc_magnitudes = load(open('../data/interim/factorize_values/MAGNITUD_correspondencia.pkl', 'rb'))
 
+# Carga del modelo
+model = load(open('../models/RandomForestMadrid_23.pk', 'rb'))
 
-st.title('Nivel de peligrosidad de contaminantes atmosféricos')
-# Introductory message
-st.write('Introduzca los siguientes valores para iniciar.')
+# Umbrales de peligrosidad definidos
+umbrales_peligrosidad = {
+    'SO2': {'Bajo': 25, 'Alto': 40},
+    'CO': {'Bajo': 2, 'Alto': 4},
+    'C6H6': {'Bajo': 2, 'Alto': 5},
+    'NO2': {'Bajo': 15, 'Alto': 25},
+    'PM2.5': {'Bajo': 10, 'Alto': 15},
+    'PM10': {'Bajo': 25, 'Alto': 45}, 
+    'NOX': {'Bajo': 75, 'Alto': 100},
+    'O3': {'Bajo': 75, 'Alto': 100}
+}
 
-#Users data
+def perform_prediction(sel_municipality, sel_area, sel_station, sel_magnitud, mean_value, model, danger_thresholds):
+    # Preparación de los datos de entrada para el modelo
+    input_data = [[sel_municipality, sel_area, sel_station, sel_magnitud, mean_value]]
+    prediction = model.predict(input_data)[0]
 
-mean_value = st.slider('Introduzca el valor recogido:',
-                    min_value = 0.04,
-                    max_value = 800.00,
-                    step = 0.01
-                    )
+    # Obteniendo el nombre del contaminante a partir del valor seleccionado
+    contaminante_nombre = list(dicc_magnitudes.keys())[list(dicc_magnitudes.values()).index(sel_magnitud)]
+    thresholds = danger_thresholds.get(contaminante_nombre)
 
-sel_municip = st.selectbox('Seleccione el municipio:','Seleccione el municipio:', dicc_municipality)
+    if thresholds:
+        if mean_value <= thresholds['Bajo']:
+            nivel_peligrosidad = 'Bajo'
+        elif mean_value <= thresholds['Alto']:
+            nivel_peligrosidad = 'Normal'
+        else:
+            nivel_peligrosidad = 'Alto'
+    else:
+        nivel_peligrosidad = 'desconocido'
 
-sel_magnitud = st.selectbox('Seleccione la magnitud:', dicc_magnitudes)
+    return nivel_peligrosidad
 
-sel_area = st.selectbox('Seleccione el tipo de área:', dicc_area)
+def main():
+    st.title('Nivel de peligrosidad de contaminantes atmosféricos')
 
-sel_station = st.selectbox('Seleccione el tipo de estación:', dicc_station)
+    # Selección de parámetros por el usuario
+    sel_municipality = st.selectbox('Seleccione el municipio:', list(dicc_municipality.keys()))
+    sel_area = st.selectbox('Seleccione el tipo de área:', list(dicc_area.keys()))
+    sel_station = st.selectbox('Seleccione el tipo de estación:', list(dicc_station.keys()))
+    sel_magnitud = st.selectbox('Seleccione la magnitud:', list(dicc_magnitudes.keys()))
+    mean_value = st.number_input('Introduzca el valor recogido:', min_value=0.04, max_value=800.00, value=0.04, step=0.01)
 
+    # Conversión de las selecciones a valores numéricos
+    sel_municipality_num = dicc_municipality[sel_municipality]
+    sel_area_num = dicc_area[sel_area]
+    sel_station_num = dicc_station[sel_station]
+    sel_magnitud_num = dicc_magnitudes[sel_magnitud]
 
-# Load factorized values
+    if st.button("Predecir"):
+        prediction_result = perform_prediction(sel_municipality_num, sel_area_num, sel_station_num, sel_magnitud_num, mean_value, model, umbrales_peligrosidad)
+        st.success(f"Nivel de peligrosidad: {prediction_result}")
 
-fact_values = load(open('../data/interim/factorize_values/facto_madrid.pk', 'rb'))
+    user_input = {
+        "Municipio": sel_municipality,
+        "Tipo de área": sel_area,
+        "Tipo de estación": sel_station,
+        "Magnitud": sel_magnitud,
+        "Media diaria": mean_value
+    }
 
-# Button to predict
+    st.write("Entrada del usuario:", user_input)
 
-row = [mean_value,
-    fact_values["N_MUNICIPIO_N"][sel_municip.lower()],
-    fact_values["MAGNITUD_N"][sel_magnitud.lower()],
-    fact_values["TIPO_AREA_N"][sel_area.lower()],
-    fact_values["TIPO_ESTACION_N"][sel_station.lower()]
-    ]
-
-if st.button('Predict:'):
-
-    model = load(open('../models/linear_regression.pk', 'rb'))
-    y_pred = model.predict([row])
-
-    st.text('The price of the insurance would be:' +str(round(y_pred[0, 0], 2)))
+if __name__ == "__main__":
+    main()
