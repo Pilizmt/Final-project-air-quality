@@ -1,30 +1,27 @@
-# **Proyecto Indice de Calidad del Aire 🌍🔍**
+# **Nivel de peligrosidad de contaminantes atmosféricos🌍🔍**
 ---
 ## *Descripción del Proyecto*
 
-Este proyecto tiene como objetivo analizar y visualizar datos relacionados con la calidad del aire, centrándose en el Índice de Calidad del Aire (AQI, por sus siglas en inglés) y evaluando el nivel de riesgo asociado con los valores contaminantes. Además, se integran datos meteorológicos para una comprensión más completa del entorno. Los datos utilizados en este proyecto han sido obtenidos de la Comunidad de Madrid, proporcionando información detallada sobre la calidad del aire en diferentes municipios de la región.
+Este proyecto tiene como objetivo predecir el nivel de peligrosidad de varios contaminantes atmosféricos en función de diferentes variables, como el tipo de área en la que se encuentra y los factores ambientales circundantes. La predicción del nivel de peligrosidad es esencial para comprender y mitigar los posibles riesgos asociados a la exposición a contaminantes en diferentes ubicaciones.
 
-**Objetivo principal:** 🚀 de este proyecto es desarrollar un modelo que pueda predecir el nivel de riesgo asociado con los valores de contaminantes. Esta predicción será una herramienta valiosa para la toma de decisiones en temas relacionados con la calidad del aire y la salud pública.
 
-**Índice de Calidad del Aire 🌍🔍(AQI):**
-Es una medida que proporciona información sobre la calidad del aire en una determinada área y cómo afecta la salud humana.
-Este índice se calcula tomando en cuenta varios contaminantes atmosféricos comunes, como partículas en suspensión (PM10 y PM2.5), dióxido de azufre (SO2), dióxido de nitrógeno (NO2), ozono (O3), y monóxido de carbono (CO).
-El AQI clasifica la calidad del aire en diferentes categorías, cada una asociada con un nivel de salud y recomendaciones específicas. Las categorías comunes incluyen:
+## **Objetivo principal:** 🚀 
 
-- **Buena (0-50):** La calidad del aire se considera satisfactoria, y la contaminación del aire presenta poco o ningún riesgo.
-- **Moderada (51-100):** La calidad del aire es aceptable; sin embargo, algunas partículas pueden ser un problema para personas extremadamente sensibles a la contaminación del aire.
-- **No saludable para grupos sensibles (101-150):** Miembros de grupos sensibles, como personas con enfermedades respiratorias o cardíacas, pueden experimentar efectos en la salud. El público en general no se ve afectado.
-- **No saludable (151-200):** Todos pueden comenzar a experimentar efectos en la salud, y los miembros de grupos sensibles pueden experimentar efectos más graves.
-- **Muy no saludable (201-300):** Advertencias de salud de emergencia; la población entera es más propensa a verse afectada.
-- **Peligroso (301 o más):** Alerta de salud: todos pueden experimentar efectos de salud más graves.
+Este proyecto es importante porque permite predecir y comprender los niveles de contaminación del aire, :
 
-El AQI proporciona una herramienta fácil de entender para que el público comprenda la calidad del aire y tome medidas adecuadas para proteger su salud cuando sea necesario.
+- Proteger la salud pública.
+- Facilitar la planificación urbana sostenible.
+- Mejorar la calidad de vida de las personas.
+- Fomentar la conciencia ambiental.
+- Contribuir a la investigación científica en calidad del aire.
+
+## *Descripción de los Datos*
 
 Los datos han sido recopilados y compartidos por la Comunidad de Madrid como parte de su iniciativa de monitoreo de la calidad del aire. Puedes encontrar más información y acceder a los conjuntos de datos originales en el sitio web oficial de la Comunidad de Madrid (https://datos.comunidad.madrid/catalogo/organization/comunidad-de-madrid).
 
 Agradecemos a la Comunidad de Madrid por proporcionar estos datos valiosos que han permitido llevar a cabo este análisis sobre la calidad del aire.
 
-## *Descripción de los Datos*
+
 
 #### **ESTRUCTURA DE LOS ARCHIVOS**
 
@@ -59,38 +56,6 @@ Agradecemos a la Comunidad de Madrid por proporcionar estos datos valiosos que h
 | 42     | Hidrocarburos totales           | Ionización llama        | 
 | 44     | Hidrocarburos no metánicos      | Ionización llama        | 
 | 431    | MetaParaXileno                  | Cromatografía de gases | 
-
-#### **CLIMATOLÓGICOS** 🌦️⛈️🌪️
-
-> Datos meteorológicos horarios desde el año 2020 recogidos por las estaciones de medición de la Red de Calidad del Aire de la Comunidad de Madrid.
-> Los datos meteorológicos oficiales son los proporcionados por la Agencia Estatal de Meteorología (AEMET).
-
-| CÓDIGO | MAGNITUD               | DESCRIPCIÓN MAGNITUD | 
-|--------|------------------------|----------------------| 
-| 81     | Velocidad del viento   | m/s                  | 
-| 82     | Dirección del viento   | Grd                  | 
-| 83     | Temperatura            | ºC                   | 
-| 86     | Humedad relativa       | %                    | 
-| 87     | Presión atmosférica    | mbar                 | 
-| 88     | Radiación solar        | W/m²                 | 
-| 89     | Precipitación          | l/m²                 | 
-
-
-#### **MUNICIPIOS** 🌇
-
-| ID    | Municipio            | ID    | Municipio                | ID    | Municipio                | ID    | Municipio                |
-|-------|----------------------|-------|--------------------------|-------|--------------------------|-------|--------------------------|
-| 5     | ALCALÁ DE HENARES    | 49    | COSLADA                  | 74    | LEGANÉS                  | 102   | ORUSCO DE TAJUÑA         |
-| 6     | ALCOBENDAS           | 58    | FUENLABRADA              | 80    | MAJADAHONDA              | 120   | PUERTO DE COTOS          |
-| 7     | ALCORCÓN             | 65    | GETAFE                   | 92    | MÓSTOLES                 | 123   | RIVAS-VACIAMADRID        |
-| 9     | ALGETE               | 67    | GUADALIX DE LA SIERRA    | 74    | LEGANÉS                  | 133   | SAN MARTÍN DE VALDEIGLESIAS |
-| 13    | ARANJUEZ             |-------|--------------------------| 80    | MAJADAHONDA              | 148   | TORREJÓN DE ARDOZ        |
-| 14    | ARGANDA DEL REY      |       |                          | 92    | MÓSTOLES                 | 161   | VALDEMORO                |
-| 16    | EL ATAZAR            |       |                          | 102   | ORUSCO DE TAJUÑA         | 171   | VILLA DEL PRADO          |
-| 45    | COLMENAR VIEJO       |       |                          | 120   | PUERTO DE COTOS          | 180   | VILLAREJO DE SALVANÉS    |
-| 47    | COLLADO VILLALBA     |       |                          | 123   | RIVAS-VACIAMADRID        |       |                          |
-
-
 
 ## *Características Principales*
 
