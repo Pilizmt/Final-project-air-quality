@@ -61,3 +61,4 @@ if st.button('Predict:'):
 
     st.text('Peligrosidad:' + result)
 
+
