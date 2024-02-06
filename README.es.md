@@ -5,9 +5,9 @@
 Este proyecto tiene como objetivo predecir el nivel de peligrosidad de varios contaminantes atmosféricos en función de diferentes variables, como el tipo de área en la que se encuentra y los factores ambientales circundantes. La predicción del nivel de peligrosidad es esencial para comprender y mitigar los posibles riesgos asociados a la exposición a contaminantes en diferentes ubicaciones.
 
 
-## **Objetivo principal:** 🚀 
+## *Objetivo principal:*
 
-Este proyecto es importante porque permite predecir y comprender los niveles de contaminación del aire, :
+Este proyecto es importante porque permite predecir y comprender los niveles de contaminación del aire para:
 
 - Proteger la salud pública.
 - Facilitar la planificación urbana sostenible.
@@ -15,71 +15,69 @@ Este proyecto es importante porque permite predecir y comprender los niveles de 
 - Fomentar la conciencia ambiental.
 - Contribuir a la investigación científica en calidad del aire.
 
-## *Descripción de los Datos*
+## *Descripción de los Datos* 📈
 
-Los datos han sido recopilados y compartidos por la Comunidad de Madrid como parte de su iniciativa de monitoreo de la calidad del aire. Puedes encontrar más información y acceder a los conjuntos de datos originales en el sitio web oficial de la Comunidad de Madrid (https://datos.comunidad.madrid/catalogo/organization/comunidad-de-madrid).
+Los datos proceden de la página oficial del Gobierno de España, Ministerio para la Transición Ecológica y el Reto Demográfico.
 
-Agradecemos a la Comunidad de Madrid por proporcionar estos datos valiosos que han permitido llevar a cabo este análisis sobre la calidad del aire.
+Se introdujeron datos recogidos en la documentación de la página para obtener unos datos que nos ayuden a desarrollar la finalidad de nuestro proyecto.
+
+Fuente: 
+
+(https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/datos-oficiales-2022.html)
 
 
+## *Estructura de los archivos*
 
-#### **ESTRUCTURA DE LOS ARCHIVOS**
+- FECHA. Fecha registrada en el momento de la toma de valores de contaminantes (numérico).
+- N_CCAA. Nombre de cada comunidad autónoma de España donde se han recogido datos de medición de cada contaminante (categórico)
+- PROVINCIA. Nombre de cada provincia en la que se han recogido datos de medición de cada contaminante (categórico)
+- N_MUNICIPIO. Nombre de cada municipio en el que se hayan recogido datos de mediciones de cada contaminante (categórico)
+- ESTACIÓN. Número asignado a cada estación de cada comunidad autónoma que ha registrado datos de medición de contaminantes (numérico)
+- MAGNITUD. Cada contaminante que se ha registrado en las distintas estaciones (categórico)
+- TIPO_AREA.Tipo de zona en la que se encuentran, zona urbana, suburbana o rural (categórico).
+- TIPO_ESTACION. Según la tipología de la fuente de emisión principal, tráfico, industrial o de fondo (categórico).
+- LATITUD, LONGITUD. Datos geográficos de cada estación donde se han registrado los contaminantes (numérico).
+- H01, H02, H03... H24. Valor registrado por hora de cada contaminante. Todos los contaminantes se han tomado con unidades de medida unificadas (µg/m3)(numérico)
 
-- provincia: Número que representa la provincia.
-- municipio: Número que identifica el municipio.
-- estacion: Número de la estación de monitoreo.
-- magnitud: Código que indica la magnitud medida.
-- punto_muestreo: Identificación específica del punto de muestreo.
-- ano, mes, dia: Año, mes y día de la medición.
-- h01 a h24: Concentraciones horarias respectivas para cada hora del día.
-- v01 a v24: Valores asociados a las concentraciones, representados como 'V'.
+## *Contaminantes* 🏭💨🚗
 
-#### **CONTAMINANTES** 🏭💨🚗
-
-> Conjunto de datos horarios medidos de forma automática en las estaciones de la Red de Calidad del Aire de la Comunidad de Madrid por anualidades.
 > Todos los datos de concentración están expresados en microgramos por metro cúbico (μg/m³).
 
-
-| CÓDIGO | MAGNITUD                         | DESCRIPCIÓN MAGNITUD | 
-|--------|---------------------------------|----------------------| 
-| 1      | Dióxido de azufre               | Fluorescencia ultravioleta | 
-| 6      | Monóxido de carbono             | Espectrometría infrarroja no dispersiva | 
-| 7      | Monóxido de nitrógeno           | Quimioluminiscencia    | 
-| 8      | Dióxido de nitrógeno            | Quimioluminiscencia    | 
-| 9      | Partículas en suspensión < PM2,5| Absorción beta        | 
-| 10     | Partículas en suspensión < PM10 | Absorción beta        | 
-| 12     | Óxidos de nitrógeno             | Quimioluminiscencia    | 
-| 14     | Ozono                           | Absorción ultravioleta | 
-| 20     | Tolueno                         | Cromatografía de gases | 
-| 22     | Black Carbon                    | Absorción de luz        | 
-| 30     | Benceno                         | Cromatografía de gases | 
-| 42     | Hidrocarburos totales           | Ionización llama        | 
-| 44     | Hidrocarburos no metánicos      | Ionización llama        | 
-| 431    | MetaParaXileno                  | Cromatografía de gases | 
+| Contaminante                           | Nombre completo                      |
+|----------------------------------------|-------------------------------------|
+| С6Н6 (Benceno)                         | Benceno                             |
+| CO (Monóxido de carbono)               | Monóxido de carbono                 |
+| NO2 (Dióxido de nitrógeno)             | Dióxido de nitrógeno                |
+| NOX (Óxidos de nitrógeno)              | Óxidos de nitrógeno                 |
+| O3 (Ozono)                             | Ozono                               |
+| PM10 (Partículas diámetro 10 μm)       | Partículas diámetro 10 μm           |
+| PM2.5 (Partículas diámetro 2.5 μm)     | Partículas diámetro 2.5 μm         |
+| SO2 (Dióxido de azufre)                | Dióxido de azufre                   |
 
 ## *Características Principales*
 
-- Análisis de datos de calidad del aire.
-- Cálculo y representación del AQI.
-- Evaluación del nivel de riesgo asociado con los valores contaminantes.
-- Integración de datos meteorológicos.
+- Análisis Exploratorio de los Datos (EDA)
 - Visualización de datos a través de gráficos y tablas.
-- Creación y entrenamiento de un modelo de machine learning para predecir el AQI.
+- Ingeniería de características: Se han creado nuevas caractarísticas a partir de las existentes para mejorar el rendimiento del modelo.
+- Selección de características: Decidir qué características se incluirán en el modelo final en función de su importancia y relevancia.
+- Creación y entrenamiento de un modelo de machine learning para predecir el nivel de peligrosidad de cada contaminante.
 
 ## *Tecnologías Utilizadas*
 
 - Python 🐍
 - Pandas 🐼
+- Numpy
 - Matplotlib/Seaborn 📊
+- Pickle
 - Scikit-learn (para el modelo de machine learning).
-- Otros módulos relevantes para análisis de datos y visualización.
-- API de datos meteorológicos (por ejemplo, OpenWeatherMap). 🌦️
+- Streamlit (para desarrollar la aplicación web interactiva).
 
 ## *Estructura del Proyecto*
 
 - `data/`: Carpeta que contiene los conjuntos de datos utilizados, procesados y temporales.
 - `models/`: Carpeta que contiene los modelos de machine learning.
-- `src/`: Carpeta que contiene el código fuente del proyecto.
+- `notebooks/`: Carpeta que contiene los cuadernos utilizados para el Análisis Exploratorio de los Datos (EDA) y la construcción del modelo Random Forest
+- `src/`: Carpeta que contiene el código para desplegar el modelo usando streamlit.
 - `README.md`: Documentación del proyecto (este archivo). 📚
 
 ## *Instrucciones de Ejecución*
