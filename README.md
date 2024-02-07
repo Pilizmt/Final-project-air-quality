@@ -67,11 +67,11 @@ Source:
 
 - Python 🐍
 - Pandas 🐼
-- Numpy
+- Numpy 🧮
 - Matplotlib/Seaborn 📊
-- Pickle
-- Scikit-learn (for the machine learning model).
-- Streamlit (for developing the interactive web application).
+- Pickle 🥒
+- Scikit-learn 🤖 (for the machine learning model)
+- Streamlit 🌐 (for developing the interactive web application)
 
 ## *Project structure*
 
