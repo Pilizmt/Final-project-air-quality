@@ -23,7 +23,7 @@ Se introdujeron datos recogidos en la documentación de la página para obtener 
 
 Fuente: 
 
-(https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/datos-oficiales-2022.html)
+https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/datos-oficiales-2022.html
 
 
 ## *Estructura de los archivos*
@@ -93,6 +93,12 @@ Fuente:
 
     ```bash
     pip install -r requirements.txt
+
+## *Renderizado* 
+
+- Para crear la página web se ha usado: https://render.com/
+
+- Enlace a la web interactiva: https://air-quality-predict.onrender.com/
 
 ## *Cómo Contribuir*
 

@@ -23,7 +23,7 @@ Data collected from the documentation of the page were introduced to obtain some
 
 Source: 
 
-(https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/datos-oficiales-2022.html)
+https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-calidad-del-aire/calidad-del-aire/evaluacion-datos/datos/datos-oficiales-2022.html
 
 
 ## *Principal Characteristics*
@@ -86,14 +86,20 @@ Source:
 1. Clone this repository:
 
    ````bash
-   git clone (https://github.com/Yakondra/Final-project-air-quality.git)
+   git clone https://github.com/Yakondra/Final-project-air-quality.git
    o
-   git clone (https://github.com/Pilizmt/Final-project-air-quality.git)
+   git clone https://github.com/Pilizmt/Final-project-air-quality.git
 
 2. Install the dependencies:
 
     ````bash
     pip install -r requirements.t
+
+## *Rendered*. 
+
+- To create the website we have used: https://render.com/
+
+- Link to the interactive website: https://air-quality-predict.onrender.com/
 
 ## *How to Contribute*
 
