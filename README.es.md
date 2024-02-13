@@ -94,7 +94,7 @@ https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/atmosfera-y-ca
     ```bash
     pip install -r requirements.txt
 
-## *Renderizado* 
+## *Render* 
 
 - Para crear la página web se ha usado: https://render.com/
 
