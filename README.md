@@ -1,5 +1,7 @@
-**Hazardous level of atmospheric pollutants🌍🔍**.
+**Hazardous level of atmospheric pollutants🌍🔍**
 ---
+![Logo](polucion.jpg)
+
 ## *Project Description*
 
 This project aims to predict the hazard level of various atmospheric pollutants as a function of different variables, such as the type of area in which it is located and the surrounding environmental factors. Hazard level prediction is essential to understand and mitigate potential risks associated with exposure to pollutants at different locations.
